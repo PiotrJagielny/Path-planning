@@ -48,11 +48,13 @@ void Gra::updateEvents()
 			m_event.mouseButton.button == sf::Mouse::Left)
 		{
 			Constants::insertStartPosition = true;
+			Constants::mouseRealeseDetection = true;
 		}
 		else if (m_event.type == sf::Event::MouseButtonReleased &&
 			m_event.mouseButton.button == sf::Mouse::Right)
 		{
 			Constants::insertEndPosition = true;
+			
 		}
 	}
 }

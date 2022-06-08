@@ -7,8 +7,8 @@ Tile::Tile()
 	m_isObsticle = false;
 	m_isVisited = false;
 	m_parentTile = nullptr;
-	m_distanceToStart = 9999999;
-	m_globalGoal = 9999999;
+	m_distanceToStart = INFINITY;
+	m_globalGoal = INFINITY;
 
 }
 
@@ -123,6 +123,11 @@ const std::vector<Tile*> Tile::getNeighborVector() const
 const sf::Vector2f& Tile::getPosition() const
 {
 	return m_kwadrat.getPosition();
+}
+
+const sf::Color& Tile::getFillColor() const
+{
+	return m_kwadrat.getFillColor();
 }
 
 float Tile::distanceBetweenTiles(const Tile& firstTile, const Tile& secoundTile)

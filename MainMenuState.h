@@ -11,6 +11,7 @@ private:
 	//Button
 	sf::RectangleShape m_dynamicModeButton;
 	sf::RectangleShape m_staticModeButton;
+	sf::RectangleShape m_mapGeneratorButton;
 
 
 	void initText();

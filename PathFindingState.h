@@ -33,6 +33,7 @@ public:
 		sf::Color innerColor, sf::Color outlineColor,
 		std::string setStartOrEndTile = "");
 	void updateTileConfigurating(sf::RenderWindow* window);
+	void updatePathFinding(sf::RenderWindow* window);
 
 	void render(sf::RenderTarget* target = nullptr) override;
 	void renderTiles(sf::RenderTarget* target = nullptr);

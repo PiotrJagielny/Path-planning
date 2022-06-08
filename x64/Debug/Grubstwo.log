@@ -1,41 +1,15 @@
-﻿  Gra.cpp
-  Main.cpp
-  MainMenuState.cpp
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(10,44): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(16,43): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(22,42): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(28,42): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(34,43): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(93,106): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-D:\VisualStudio\SFML\Grubstwo\MainMenuState.cpp(93,71): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-  PathFindingState.cpp
-D:\VisualStudio\SFML\Grubstwo\PathFindingState.cpp(100,50): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+﻿  PathFindingState.cpp
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(134,50): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
           with
           [
               T=unsigned int
           ]
-D:\VisualStudio\SFML\Grubstwo\PathFindingState.cpp(101,50): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(135,50): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
           with
           [
               T=unsigned int
           ]
-D:\VisualStudio\SFML\Grubstwo\PathFindingState.cpp(116,71): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(150,71): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -44,7 +18,7 @@ D:\VisualStudio\SFML\Grubstwo\PathFindingState.cpp(116,71): warning C4244: "argu
           [
               T=float
           ]
-D:\VisualStudio\SFML\Grubstwo\PathFindingState.cpp(116,36): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(150,36): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
@@ -53,5 +27,4 @@ D:\VisualStudio\SFML\Grubstwo\PathFindingState.cpp(116,36): warning C4244: "argu
           [
               T=float
           ]
-  Generowanie kodu...
-  Grubstwo.vcxproj -> D:\VisualStudio\SFML\Grubstwo\x64\Debug\Grubstwo.exe
+  Grubstwo.vcxproj -> D:\Program Files (x86)\GitHub\Path-planning\x64\Debug\Grubstwo.exe

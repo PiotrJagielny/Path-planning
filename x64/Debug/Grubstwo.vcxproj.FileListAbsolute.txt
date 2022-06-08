@@ -1,1 +1,2 @@
 D:\VisualStudio\SFML\Grubstwo\x64\Debug\Grubstwo.exe
+D:\Program Files (x86)\GitHub\Path-planning\x64\Debug\Grubstwo.exe

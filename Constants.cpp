@@ -16,3 +16,6 @@ bool Constants::insertStartPosition = false;
 bool Constants::insertEndPosition = false;
 bool Constants::isStaticModeSeleceted = false;
 bool Constants::isDynamicModeSelected = false;
+bool Constants::isPathFound = false;
+bool Constants::isMapGeneratorSelected = false;
+bool Constants::mouseRealeseDetection = false;

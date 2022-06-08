@@ -44,6 +44,7 @@ public:
 	const bool& isObsticle() const;
 	const std::vector<Tile*> getNeighborVector() const;
 	const sf::Vector2f& getPosition() const;
+	const sf::Color& getFillColor() const;
 
 	static float distanceBetweenTiles(const Tile& firstTile, const Tile& secoundTile);
 };

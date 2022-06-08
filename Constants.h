@@ -15,6 +15,9 @@ public:
 	static bool insertEndPosition;
 	static bool isDynamicModeSelected;
 	static bool isStaticModeSeleceted;
+	static bool isPathFound;
+	static bool isMapGeneratorSelected;
+	static bool mouseRealeseDetection;
 
 };
 

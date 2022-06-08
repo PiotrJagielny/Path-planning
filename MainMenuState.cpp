@@ -34,6 +34,12 @@ void MainMenuState::initText()
 	m_texts["dynamicMode"]->setCharacterSize(35.0f);
 	m_texts["dynamicMode"]->setString("- Dynamic mode (Without visualization):");
 
+	m_texts["mapGenerator"] = new sf::Text;
+	m_texts["mapGenerator"]->setFont(*m_font);
+	m_texts["mapGenerator"]->setPosition(10.0f, 370.0f);
+	m_texts["mapGenerator"]->setCharacterSize(35.0f);
+	m_texts["mapGenerator"]->setString("- Map generator:");
+
 
 
 }
@@ -52,6 +58,12 @@ void MainMenuState::initButtons()
 	m_staticModeButton.setOutlineThickness(2.0f);
 	m_staticModeButton.setOutlineColor(sf::Color::White);
 
+	m_mapGeneratorButton.setSize(sf::Vector2f{ 40.0f, 40.0f });
+	m_mapGeneratorButton.setFillColor(sf::Color(255, 255, 255, 100));
+	m_mapGeneratorButton.setPosition(250.0f, 370.0f);
+	m_mapGeneratorButton.setOutlineThickness(2.0f);
+	m_mapGeneratorButton.setOutlineColor(sf::Color::White);
+
 }
 
 MainMenuState::MainMenuState(sf::RenderTarget* viewPoint, std::stack<State*>* statesPtr) :
@@ -68,6 +80,7 @@ MainMenuState::~MainMenuState()
 	delete m_texts["staticMode"];
 	delete m_texts["dynamicMode"];
 	delete m_texts["confirmText"];
+	delete m_texts["mapGenerator"];
 }
 
 void MainMenuState::endState()
@@ -90,20 +103,25 @@ void MainMenuState::update(sf::RenderWindow* window)
 
 bool MainMenuState::buttonHoverAndClickLogic(sf::RectangleShape& button, sf::RenderWindow* window, bool& buttonBool)
 {
+	
+
 	if (button.getGlobalBounds().contains(sf::Mouse::getPosition(*window).x, sf::Mouse::getPosition(*window).y))
 	{
 		button.setFillColor(sf::Color::Green);
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (Constants::mouseRealeseDetection == true)
 		{
-			buttonBool = true;
+			Constants::mouseRealeseDetection = false;
+			buttonBool = !buttonBool;
 			return true;
 		}
+
 	}
-	else if(buttonBool == false)
+	else if (buttonBool == false)
 	{
 		button.setFillColor(sf::Color{ 255,255,255,100 });
 	}
+	
 
 	return false;
 }
@@ -119,6 +137,11 @@ void MainMenuState::updateButtons(sf::RenderWindow* window)
 	{
 		Constants::isStaticModeSeleceted = false;
 	}
+	else if (buttonHoverAndClickLogic(m_mapGeneratorButton, window, Constants::isMapGeneratorSelected))
+	{
+		
+	}
+	
 }
 
 void MainMenuState::render(sf::RenderTarget* target)
@@ -135,10 +158,12 @@ void MainMenuState::renderText(sf::RenderTarget* target)
 	target->draw(*m_texts["staticMode"]);
 	target->draw(*m_texts["dynamicMode"]);
 	target->draw(*m_texts["confirmText"]);
+	target->draw(*m_texts["mapGenerator"]);
 }
 
 void MainMenuState::renderButtons(sf::RenderTarget* target)
 {
 	target->draw(m_dynamicModeButton);
 	target->draw(m_staticModeButton);
+	target->draw(m_mapGeneratorButton);
 }

@@ -1,0 +1,70 @@
+﻿  Constants.cpp
+D:\Program Files (x86)\GitHub\Path-planning\Constants.cpp(11,56): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\Constants.cpp(12,57): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+  Gra.cpp
+  Headers.cpp
+  Main.cpp
+  MainMenuState.cpp
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(10,44): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(16,43): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(22,42): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(28,42): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(34,43): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(40,44): warning C4244: "argument": konwersja z "float" do "unsigned int", możliwa utrata danych
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(108,106): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Program Files (x86)\GitHub\Path-planning\MainMenuState.cpp(108,71): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  PathFindingState.cpp
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(134,50): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=unsigned int
+          ]
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(135,50): warning C4244: "=": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=unsigned int
+          ]
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(150,71): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+D:\Program Files (x86)\GitHub\Path-planning\PathFindingState.cpp(150,36): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  State.cpp
+  Tile.cpp
+  pathFindingAlgorithms.cpp
+D:\Program Files (x86)\GitHub\Path-planning\pathFindingAlgorithms.cpp(175,78): warning C4267: "argument": konwersja z "size_t" do "int", możliwa utrata danych
+  Trwa generowanie kodu
+  50 of 561 functions ( 8.9%) were compiled, the rest were copied from previous compilation.
+    31 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  Grubstwo.vcxproj -> D:\Program Files (x86)\GitHub\Path-planning\x64\Release\Grubstwo.exe

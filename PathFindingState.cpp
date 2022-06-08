@@ -25,9 +25,29 @@ void PathFindingState::initGrid()
 			}
 			else
 			{
-				m_tileMap[iii][kkk].setFillColor(sf::Color::Black);
+				if (Constants::isMapGeneratorSelected == true)
+				{
+					int randomInt(auxiliaryFunctions::getRandomInt(1, 100));
+
+					if (randomInt >= 60)
+					{
+						m_tileMap[iii][kkk].setFillColor(sf::Color::White);
+						m_tileMap[iii][kkk].setOutlineColor(sf::Color::Black);
+						m_tileMap[iii][kkk].setTileObsticle(true);
+					}
+					else
+					{
+						m_tileMap[iii][kkk].setFillColor(sf::Color::Black);
+						m_tileMap[iii][kkk].setOutlineColor(sf::Color::White);
+					}
+				}
+				else
+				{
+					m_tileMap[iii][kkk].setFillColor(sf::Color::Black);
+					m_tileMap[iii][kkk].setOutlineColor(sf::Color::White);
+				}
+
 				m_tileMap[iii][kkk].setOutlineThickness(1.0f);
-				m_tileMap[iii][kkk].setOutlineColor(sf::Color::White);
 			}
 			m_tileMap[iii][kkk].setPosition(kkk * Constants::gridSizeFloat, iii * Constants::gridSizeFloat);
 			m_tileMap[iii][kkk].setGridPosition(kkk, iii);
@@ -74,6 +94,7 @@ PathFindingState::PathFindingState(sf::RenderTarget* viewPoint, std::stack<State
 {
 	m_startTile = nullptr;
 	m_endTile = nullptr;
+	Constants::isPathFound = false;
 
 	this->initGrid();
 	this->initNeighboors();
@@ -90,6 +111,21 @@ void PathFindingState::endState()
 {
 	std::cout << "Ending Main menu State\n";
 
+}
+
+void PathFindingState::update(sf::RenderWindow* window)
+{
+	this->checkForQuit();
+	this->updateMousePosition(window);
+	this->updateTileConfigurating(window);
+	this->updatePathFinding(window);
+
+	/*if (m_startTile != nullptr && m_endTile != nullptr && sf::Keyboard::isKeyPressed(sf::Keyboard::G))
+	{
+		
+		pathFindingAlgorithms::A_STAR_ALGORITHM(m_tileMap, m_startTile, m_endTile);
+	}*/
+	
 }
 
 void PathFindingState::updateMousePosition(sf::RenderWindow* window)
@@ -122,21 +158,27 @@ void PathFindingState::setObsticlesStartEnd(sf::RenderWindow* window, bool isObs
 
 				if (setStartOrEndTile == "setStartTile")
 				{
-					m_startTile = &m_tileMap[iii][kkk];
+					if (iii != m_startGridPosition.x || kkk != m_startGridPosition.y)
+					{
+						m_startTile = &m_tileMap[iii][kkk];
 
-					m_tileMap[m_startGridPosition.x][m_startGridPosition.y].setFillColor(sf::Color::Black);
-					m_tileMap[m_startGridPosition.x][m_startGridPosition.y].setOutlineColor(sf::Color::White);
+						m_tileMap[m_startGridPosition.x][m_startGridPosition.y].setFillColor(sf::Color::Black);
+						m_tileMap[m_startGridPosition.x][m_startGridPosition.y].setOutlineColor(sf::Color::White);
 
-					m_startGridPosition = sf::Vector2i{ iii,kkk };
+						m_startGridPosition = sf::Vector2i{ iii,kkk };
+					}
 				}
 				else if (setStartOrEndTile == "setEndTile")
 				{
-					m_endTile = &m_tileMap[iii][kkk];
+					if (iii != m_endGridPosition.x || kkk != m_endGridPosition.y)
+					{
+						m_endTile = &m_tileMap[iii][kkk];
 
-					m_tileMap[m_endGridPosition.x][m_endGridPosition.y].setFillColor(sf::Color::Black);
-					m_tileMap[m_endGridPosition.x][m_endGridPosition.y].setOutlineColor(sf::Color::White);
+						m_tileMap[m_endGridPosition.x][m_endGridPosition.y].setFillColor(sf::Color::Black);
+						m_tileMap[m_endGridPosition.x][m_endGridPosition.y].setOutlineColor(sf::Color::White);
 
-					m_endGridPosition = sf::Vector2i{ iii,kkk };
+						m_endGridPosition = sf::Vector2i{ iii,kkk };
+					}
 				}
 
 			}
@@ -146,47 +188,56 @@ void PathFindingState::setObsticlesStartEnd(sf::RenderWindow* window, bool isObs
 
 void PathFindingState::updateTileConfigurating(sf::RenderWindow* window)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	if (Constants::isPathFound == false)
 	{
-		setObsticlesStartEnd(window, true, sf::Color::White, sf::Color::Black);
-	}
-	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-	{
-		setObsticlesStartEnd(window, false, sf::Color::Black, sf::Color::White);
-	}
-	else if (Constants::insertStartPosition == true && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-	{
-		setObsticlesStartEnd(window, false, sf::Color::Green, sf::Color::Green, "setStartTile");
-	}
-	else if (Constants::insertEndPosition == true && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-	{
-		setObsticlesStartEnd(window, false, sf::Color::Red, sf::Color::Red, "setEndTile");
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			auxiliaryFunctions::clearOldPath(m_tileMap);
+			auxiliaryFunctions::clearOldVisitedTiles(m_tileMap);
+			setObsticlesStartEnd(window, true, sf::Color::White, sf::Color::Black);
+		}
+		else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		{
+			auxiliaryFunctions::clearOldPath(m_tileMap);
+			auxiliaryFunctions::clearOldVisitedTiles(m_tileMap);
+			setObsticlesStartEnd(window, false, sf::Color::Black, sf::Color::White);
+		}
+		else if (Constants::insertStartPosition == true && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+		{
+			auxiliaryFunctions::clearOldPath(m_tileMap);
+			auxiliaryFunctions::clearOldVisitedTiles(m_tileMap);
+			setObsticlesStartEnd(window, false, sf::Color::Green, sf::Color::Green, "setStartTile");
+		}
+		else if (Constants::insertEndPosition == true && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+		{
+			auxiliaryFunctions::clearOldPath(m_tileMap);
+			auxiliaryFunctions::clearOldVisitedTiles(m_tileMap);
+			setObsticlesStartEnd(window, false, sf::Color::Red, sf::Color::Red, "setEndTile");
+		}
 	}
 
 	Constants::insertEndPosition = false;
 	Constants::insertStartPosition = false;
 }
 
-void PathFindingState::update(sf::RenderWindow* window)
+void PathFindingState::updatePathFinding(sf::RenderWindow* window)
 {
-	this->checkForQuit();
-	this->updateMousePosition(window);
-	this->updateTileConfigurating(window);
-
-	if (m_startTile != nullptr && m_endTile != nullptr && sf::Keyboard::isKeyPressed(sf::Keyboard::G))
-		pathFindingAlgorithms::A_STAR_ALGORITHM(m_tileMap, m_startTile, m_endTile);
 	
-}
-
-
-void PathFindingState::renderTiles(sf::RenderTarget* target)
-{
-	for (int iii{ 0 }; iii < Constants::mapSizeY; ++iii)
+	if (m_startTile != nullptr && m_endTile != nullptr && Constants::isDynamicModeSelected)
 	{
-		for (int kkk{ 0 }; kkk < Constants::mapSizeX; ++kkk)
+		pathFindingAlgorithms::A_STAR_ALGORITHM(m_tileMap, m_startTile, m_endTile, window);
+		auxiliaryFunctions::drawShortestPath(m_endTile);
+		auxiliaryFunctions::setVisitedTilesColor(m_tileMap, m_startTile, m_endTile);
+		
+	}
+	else if (m_startTile != nullptr && m_endTile != nullptr && Constants::isStaticModeSeleceted &&
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		if (Constants::isPathFound == false)
 		{
-			target->draw(m_tileMap[iii][kkk].getRectangle());
+			pathFindingAlgorithms::A_STAR_ALGORITHM(m_tileMap, m_startTile, m_endTile, window);
 		}
+		auxiliaryFunctions::drawShortestPath(m_endTile);
 	}
 }
 
@@ -194,8 +245,20 @@ void PathFindingState::render(sf::RenderTarget* target)
 {
 	this->renderTiles(target);
 
-	pathFindingAlgorithms::drawShortestPath(m_endTile);
+	
 
 	target->draw(m_tileSelector);
+}
+
+void PathFindingState::renderTiles(sf::RenderTarget* target)
+{
+	for (int iii{ 0 }; iii < Constants::mapSizeY; ++iii)
+	{
+		for (int kkk{ 0 }; kkk < Constants::mapSizeX; ++kkk)
+		{
+			
+			target->draw(m_tileMap[iii][kkk].getRectangle());
+		}
+	}
 }
 
