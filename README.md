@@ -16,8 +16,15 @@ Setting end and start points
 ![image](https://user-images.githubusercontent.com/76881722/228043820-3a42d0aa-93ce-4ccd-8e35-3e14b50632d0.png)
 Proccess of finding shortest path
 ![image](https://user-images.githubusercontent.com/76881722/228044577-c0257810-a23e-443a-9575-671634d8f0cc.png)
-Shortest path is found
+Shortest path found
 ![image](https://user-images.githubusercontent.com/76881722/228044676-c6f73b57-0004-4959-ba54-28fd7c50a509.png)
+
+There is also Dynamic mode, where you firstly set start and end point, and then the path will update as you add new obsticles
+
+Start and end point set. The shortest path appeared
+![image](https://user-images.githubusercontent.com/76881722/228045025-13db7611-378d-4230-a777-7aed558ed590.png)
+The path is updating with new obsticles adding
+![image](https://user-images.githubusercontent.com/76881722/228045149-72a87f05-da92-41f1-889a-d5696df1bb4d.png)
 
 
 
